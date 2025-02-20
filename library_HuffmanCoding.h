@@ -2,6 +2,8 @@
 #include <unordered_map>
 #include<queue>
 #include <vector>
+#include <fstream>
+#include <bitset>
 using namespace std;
 
 struct huffmanNode {
@@ -25,3 +27,4 @@ huffmanNode* buildHuffmanTree(vector<pair<char, int>>& frequency);
 void generalHuffmanCodes(huffmanNode* root, string code, unordered_map<char, string>& huffmanTable);
 string encodeText(const string& text, unordered_map<char, string>& huffmanTable);
 string decodeText(huffmanNode* root, const string encodedText);
+void saveEncodeFile(const string encodedText, unordered_map<char, string>& huffmanTable);

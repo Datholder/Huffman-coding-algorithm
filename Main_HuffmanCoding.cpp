@@ -34,13 +34,14 @@ int main() {
     // giải mã văn bản.
     string decodedText = decodeText(root, encodedText);
     cout << "Van ban goc: " << decodedText << endl;
-
+    saveEncodeFile(encodedText, huffmanTable);
+    cout << encodedText.size();
     //Note:
-    cout << "Theo bảng mã ASCII mở rộng, mỗi kí tự được biểu diễn bằng 8 bit như vậy với chuỗi TIENDAT\n";
+    /*cout << "Theo bảng mã ASCII mở rộng, mỗi kí tự được biểu diễn bằng 8 bit như vậy với chuỗi TIENDAT\n";
     cout << "có 7 kí tự và tổng số bit cần để biểu diễn chuỗi này theo mã ASSCI là 7*8 = 56 kí tự và cách";
     cout << "mã hoá trong ví dụ trên đã biểu diễn chuỗi TIENDAT chỉ còn lại 25 bit, tiết kiệm 31 bit. Có vẻ \n";
     cout << "không đáng bao nhiêu đúng không. Nhưng nếu với văn bản cả triệu từ thì con số tiết kiệm sẽ lớn \n ";
-    cout << "hơn rất nhiều và mã hoá được sinh ra để làm điều đó";
+    cout << "hơn rất nhiều và mã hoá được sinh ra để làm điều đó";*/
 
 	return 0;
 }

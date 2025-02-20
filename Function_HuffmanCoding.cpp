@@ -61,3 +61,33 @@ string decodeText(huffmanNode* root, const string encodedText) {
 	}
 	return decodedText;
 }
+
+void saveEncodeFile(const string encodedText, unordered_map<char, string>& huffmanTable) {
+	ofstream outFile("huffman_encoded.bin", ios::binary);
+	if (!outFile) {
+		cerr << "Khong the mo file de ghi!\n";
+		return;
+	}
+
+	outFile << huffmanTable.size() << endl;
+	for (auto it : huffmanTable) {
+		outFile << it.first << " " << it.second << endl;
+	}
+
+	bitset<8> bitBuffer;
+	int bitCount = 0;
+	for (char bit : encodedText) {
+		bitBuffer[7 - bitCount] = (bit == '1');
+		bitCount++;
+		if (bitCount == 8) {
+			outFile.put(static_cast<char>(bitBuffer.to_ullong()));
+			bitBuffer.reset();
+			bitCount = 0;
+		}
+	}
+	if (bitCount > 0) {
+		outFile.put(static_cast<char>(bitBuffer.to_ullong()));
+	}
+	outFile.close();
+	cout << "Da luu file nen huffman thanh cong!\n";
+}
